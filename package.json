@@ -1,0 +1,23 @@
+{
+  "name": "express-openai",
+  "version": "1.0.0",
+  "description": "learn open ai API to build chat bot",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "nodemon src/server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "openai",
+    "chatbot",
+    "express"
+  ],
+  "author": "fajrCode",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
