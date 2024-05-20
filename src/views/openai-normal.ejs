@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server-Sent Events Example</title>
+  </head>
+  <body>
+    <p><a href="/"><-- Kembali</a></p>
+    <h1>Testing API Open AI <strong>Normal Mode</strong></h1>
+    <div>
+      <label for="prompt">Tanya aku</label>
+      <input id="prompt" type="text">
+    </div>
+    <button onclick="generate()">Send</button>
+    <div id="result"></div>
+    <script>
+      async function generate(){
+        const userPrompt = document.getElementById("prompt").value;
+        const result = document.getElementById("result");
+        try {
+          const response = await fetch("/openai/normal", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ userPrompt })
+          });
+
+          if (response.status === 200) {
+              // const data = await response.json();
+              const data = await response.text();
+              result.innerHTML = `${data}`;
+          } else {
+              throw new Error(response.statusText);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+
+      }
+    </script>
+  </body>
+</html>
